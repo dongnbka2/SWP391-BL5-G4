@@ -117,14 +117,14 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="admin-view-order" class="menu-link">
                         <div data-i18n="User">All Order</div>
                     </a>
                 </li>
             </ul>  
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="admin-create-order" class="menu-link">
                         <div data-i18n="User">Add Order</div>
                     </a>
                 </li>
