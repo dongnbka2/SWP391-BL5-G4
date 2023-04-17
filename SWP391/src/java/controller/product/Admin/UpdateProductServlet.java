@@ -1,7 +1,6 @@
-package controller.product;
+package controller.product.Admin;
 
 import dal.ProductDAO;
-import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Product;
@@ -10,8 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;

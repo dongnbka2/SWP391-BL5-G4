@@ -1,4 +1,4 @@
-package controller.product;
+package controller.product.Admin;
 
 import dal.ProductDAO;
 import jakarta.servlet.*;
