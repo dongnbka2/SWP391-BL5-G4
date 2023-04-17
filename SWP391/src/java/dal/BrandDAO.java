@@ -1,6 +1,6 @@
 package dal;
 
-//import static dal.UserDAO.sendMail;
+import static dal.UserDAO.sendMail;
 import model.Brand;
 
 import java.sql.Connection;
@@ -176,9 +176,9 @@ public class BrandDAO {
         return b;
     }
 
-//    public static void main(String[] args) {
-//        sendMail("trinhminh2907@gmail.com", "Message from customer", "Hello", "minhtche164004@fpt.edu.vn", "hhhsfvcbugpcukrg");
-//    }
+    public static void main(String[] args) {
+        sendMail("trinhminh2907@gmail.com", "Message from customer", "Hello", "minhtche164004@fpt.edu.vn", "hhhsfvcbugpcukrg");
+    }
     public static ArrayList<Brand> getListBrandContains(String name, String name0, String status, String status0, String target) {
         ArrayList<Brand> myList = new ArrayList<>();
         try {

@@ -5,7 +5,6 @@
 package controller.Brand.Admin;
 
 import dal.BrandDAO;
-import dal.ProductDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,7 +14,6 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import model.Brand;
-import model.Product;
 
 /**
  *

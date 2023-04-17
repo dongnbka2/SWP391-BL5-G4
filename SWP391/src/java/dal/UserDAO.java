@@ -1,14 +1,14 @@
 package dal;
 
 import model.User;
-//import jakarta.mail.Authenticator;
-//import jakarta.mail.Message;
-//import jakarta.mail.MessagingException;
-//import jakarta.mail.PasswordAuthentication;
-//import jakarta.mail.Session;
-//import jakarta.mail.Transport;
-//import jakarta.mail.internet.InternetAddress;
-//import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.Authenticator;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.PasswordAuthentication;
+import jakarta.mail.Session;
+import jakarta.mail.Transport;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Properties;
-
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -186,32 +186,32 @@ public class UserDAO {
         return true;
     }
 
-//    public static void sendMail(String to, String sub, String msg, String username, String pass) {
-//        Properties pr = new Properties();
-//        pr.setProperty("mail.smtp.host", "smtp.gmail.com");
-//        pr.setProperty("mail.smtp.port", "587"); //TLS
-//        pr.setProperty("mail.smtp.auth", "true");
-//        pr.setProperty("mail.smtp.starttls.enable", "true");
-//        Session session = Session.getInstance(pr, new Authenticator() {
-//            @Override
-//            protected PasswordAuthentication getPasswordAuthentication() {
-//                return new PasswordAuthentication(username, pass);
-//            }
-//
-//        });
-//        try {
-//            Message mess = new MimeMessage(session);
-//            mess.setFrom(new InternetAddress(username));
-//            mess.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
-//
-//            mess.setSubject(sub);
-//            mess.setContent(msg, "text/html; charset=utf-8");
-//            Transport.send(mess);
-//        } catch (MessagingException e) {
-//            
-//            e.printStackTrace();
-//        }
-//    }
+    public static void sendMail(String to, String sub, String msg, String username, String pass) {
+        Properties pr = new Properties();
+        pr.setProperty("mail.smtp.host", "smtp.gmail.com");
+        pr.setProperty("mail.smtp.port", "587"); //TLS
+        pr.setProperty("mail.smtp.auth", "true");
+        pr.setProperty("mail.smtp.starttls.enable", "true");
+        Session session = Session.getInstance(pr, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, pass);
+            }
+
+        });
+        try {
+            Message mess = new MimeMessage(session);
+            mess.setFrom(new InternetAddress(username));
+            mess.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+            mess.setSubject(sub);
+            mess.setContent(msg, "text/html; charset=utf-8");
+            Transport.send(mess);
+        } catch (MessagingException e) {
+            
+            e.printStackTrace();
+        }
+    }
 
     public static User getUser(String email, String pass) {
         try {
@@ -293,35 +293,35 @@ public class UserDAO {
         return myList;
     }
 
-//    public static void updateNewPass(String user_id, String newpass) {
-//        try {
-//            String sqlUpdate = "Update [Users] set password='" + encryptPassword(newpass) + "' "
-//                    + "where user_id=" + user_id + "";
-//            cnn = DBConnect.getConnection();
-//            stm = cnn.prepareStatement(sqlUpdate);
-//            stm.execute();
-//        } catch (Exception e) {
-//            System.out.println("UpdateNewPass fail:" + e.getMessage());
-//        }
-//    }
+    public static void updateNewPass(String user_id, String newpass) {
+        try {
+            String sqlUpdate = "Update [Users] set password='" + encryptPassword(newpass) + "' "
+                    + "where user_id=" + user_id + "";
+            cnn = DBConnect.getConnection();
+            stm = cnn.prepareStatement(sqlUpdate);
+            stm.execute();
+        } catch (Exception e) {
+            System.out.println("UpdateNewPass fail:" + e.getMessage());
+        }
+    }
 
-//    public static boolean checkPassByID(String user_id, String oldpass) {
-//        String a = "";
-//        try {
-//            String sql = "select [password] from Users where user_id = ?";
-//            Connection conn = DBConnect.getConnection();
-//            PreparedStatement pstm = conn.prepareStatement(sql);
-//            pstm.setString(1, user_id);
-//            ResultSet rs = pstm.executeQuery();
-//            while (rs.next()) {
-//                a = rs.getString("password");
-//            }
-//        } catch (Exception e) {
-//            System.out.println(a);
-//            System.out.println("CheckPass fail:" + e.getMessage());
-//        }
-//        return a.equals(encryptPassword(oldpass));
-//    }
+    public static boolean checkPassByID(String user_id, String oldpass) {
+        String a = "";
+        try {
+            String sql = "select [password] from Users where user_id = ?";
+            Connection conn = DBConnect.getConnection();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, user_id);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                a = rs.getString("password");
+            }
+        } catch (Exception e) {
+            System.out.println(a);
+            System.out.println("CheckPass fail:" + e.getMessage());
+        }
+        return a.equals(encryptPassword(oldpass));
+    }
 
     public static String getPassbyEmail(String email) {
         try {
@@ -390,13 +390,13 @@ public class UserDAO {
         return res;
     }
 
-//    public static String encryptPassword(String pass) {
-//        return DigestUtils.md5Hex(pass).toUpperCase();
-//    }
-//
-//    public static boolean checkPassword(String passInput, String passDB) {
-//        return passDB.equals(DigestUtils.md5Hex(passInput).toUpperCase());
-//    }
+    public static String encryptPassword(String pass) {
+        return DigestUtils.md5Hex(pass).toUpperCase();
+    }
+
+    public static boolean checkPassword(String passInput, String passDB) {
+        return passDB.equals(DigestUtils.md5Hex(passInput).toUpperCase());
+    }
 
     public static void updateUserStatus(int userID, boolean status) {
         try {
@@ -453,16 +453,16 @@ public class UserDAO {
         return list;
     }   
 
-//    public static void updatePassbyEmail(String email, String newpass) {
-//        try {
-//            String sql = "update Users set password = '" + encryptPassword(newpass) + "'\n"
-//                    + "where email='" + email + "'";
-//            Connection conn = DBConnect.getConnection();
-//            PreparedStatement pstm = conn.prepareStatement(sql);
-//            pstm.executeUpdate();
-//        } catch (Exception e) {
-//            System.out.println("updatePassbyEmail error: " + e.getMessage());
-//        }
-//    }
+    public static void updatePassbyEmail(String email, String newpass) {
+        try {
+            String sql = "update Users set password = '" + encryptPassword(newpass) + "'\n"
+                    + "where email='" + email + "'";
+            Connection conn = DBConnect.getConnection();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("updatePassbyEmail error: " + e.getMessage());
+        }
+    }
 
 }
