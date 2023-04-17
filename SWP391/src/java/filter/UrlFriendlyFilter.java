@@ -22,7 +22,7 @@ import model.User;
 
 /**
  *
- * @author TNA
+ * @author Dat
  */
 @WebFilter(filterName = "UrlFriendlyFilter", urlPatterns = {"/*"})
 public class UrlFriendlyFilter implements Filter {
