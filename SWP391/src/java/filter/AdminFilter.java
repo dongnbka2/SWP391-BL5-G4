@@ -22,7 +22,7 @@ import model.User;
 
 /**
  *
- * @author TNA
+ * @author Dat
  */
 @WebFilter(filterName = "AdminFilter", urlPatterns = {"/*"})
 public class AdminFilter implements Filter {
