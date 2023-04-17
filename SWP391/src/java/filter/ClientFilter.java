@@ -22,7 +22,7 @@ import model.Customer;
 
 /**
  *
- * @author M.S.I
+ * @author Dat
  */
 @WebFilter(filterName = "ClientFilter", urlPatterns = {"/*"})
 public class ClientFilter implements Filter {
