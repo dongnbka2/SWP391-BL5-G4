@@ -42,7 +42,7 @@ public class SearchBrandServlet extends HttpServlet {
             page = Integer.parseInt(xpage);
         }
         int begin = numPerPage * (page - 1);
-        int end = Math.min(numPerPage * page, size);
+        int end = Math.min(numPerPage * page, size);//phantrang
 //        for (Category category : list1) {
 //            System.out.println(category);
 //        }
