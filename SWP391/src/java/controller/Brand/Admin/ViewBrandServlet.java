@@ -42,11 +42,9 @@ public class ViewBrandServlet extends HttpServlet {
         String pageType = req.getParameter("page-type");
         pageType = pageType == null ? "all" : pageType;
         
-        DecimalFormat df = new DecimalFormat("#");
-        df.setMaximumFractionDigits(8);
         req.setAttribute("pageType", pageType);
         req.setAttribute("brandDao", new BrandDAO());
-        req.setAttribute("df", df);
+        
         req.setAttribute("list", BrandDAO.getListByPage(list, begin, end));                
         req.setAttribute("size", size%numPerPage==0?size/numPerPage:(size/numPerPage)+1);
         req.setAttribute("page", page);
