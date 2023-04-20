@@ -1,8 +1,4 @@
-<%-- 
-    Document   : Login
-    Created on : Dec 5, 2022, 10:06:52 AM
-    Author     : M.S.I
---%>
+
 <%@ page session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

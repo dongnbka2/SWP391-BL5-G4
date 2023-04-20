@@ -14,9 +14,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import model.Customer;
 
-/**
- *
- * @author Dat
+
  */
 @WebServlet(name = "ChangePasswordServlet", urlPatterns = "/changepassword")
 public class ChangePasswordServlet extends HttpServlet {
