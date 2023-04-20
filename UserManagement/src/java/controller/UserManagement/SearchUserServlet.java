@@ -78,21 +78,15 @@ public class SearchUserServlet extends HttpServlet {
         int begin = numPerPage * (page - 1);
         int end = Math.min(numPerPage * page, size);
 
-//        for (Product product : list) {
-//            System.out.println(product.getCode());
-//        }
         req.setAttribute("pageType", pageType);
         req.setAttribute("UserDAO", new UserDAO());
         req.setAttribute("list", UserDAO.getListByPage(list, begin, end));
         req.setAttribute("size", size % numPerPage == 0 ? size / numPerPage : (size / numPerPage) + 1);
         req.setAttribute("page", page);
-
         req.setAttribute("name", name);
         req.setAttribute("status", status);
-
         req.getRequestDispatcher("AdminPage/JSP/user-search.jsp").forward(req, resp);    
-//        resp.getWriter().print(name);
-//        resp.getWriter().print(UserDAO.getListByPage(UserDAO.getListUserContains("fullname", "Duong", "status", "1", "modified_at"), 0, 5).size());
+
     }
 
     /**

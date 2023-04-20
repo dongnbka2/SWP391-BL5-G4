@@ -13,11 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
+
 
 /**
  *
@@ -55,19 +51,7 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {      
-        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyy");
-        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
-        LocalDate todaydate = LocalDate.now().withDayOfMonth(1);
-        LocalDate predate = todaydate.minusMonths(1);
-        LocalDate postdate = todaydate.plusMonths(1);
-        DecimalFormat df = new DecimalFormat("#,###.##");
-        df.setMaximumFractionDigits(8);
-        
-        
-        
-        
-        
-        request.getRequestDispatcher("AdminPage/JSP/admin.jsp").forward(request,response);
+    request.getRequestDispatcher("AdminPage/JSP/admin.jsp").forward(request,response);
     } 
 
     @Override
